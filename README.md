@@ -6,8 +6,11 @@ The PHP Video Embedder is hosted under the Creative Commons 4.0 License: http://
 - Youtube
 - Twitch
   - Live stream
-  - Video On Demand
+  - Video on Demand (VOD)
 - Vimeo
+- Hitbox
+  - Live stream
+  - Video on Demand (VOD)
 
 All the embeds has **class** and **id** equal to **"embed_video"**
 
