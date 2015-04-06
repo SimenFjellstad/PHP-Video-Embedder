@@ -6,6 +6,7 @@ Project page: https://github.com/SimenFjellstad/PHP-Video-Embedder/
 This document is published under the Creative Commons 4.0 License:
 http://creativecommons.org/licenses/by/4.0
 */
+
 	$debug = false;
 	$width = -1;
 	$height = -1;
@@ -17,7 +18,7 @@ http://creativecommons.org/licenses/by/4.0
 	}
 
 	function embed_video($link){
-		if(strpos($link,"twitch") !== false){ //This is a twitch video
+		if(stripos($link,"twitch") !== false){ //This is a twitch video
 			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
 				$width = 620;
 				$height = 378;
@@ -26,8 +27,8 @@ http://creativecommons.org/licenses/by/4.0
 				$width = $GLOBALS['width'];
 				$height = $GLOBALS['height'];
 			}
-			if(strpos($link,".tv/") !== false){
-				if(strpos($link,"/c/") !== false){ //This is a VOD
+			if(stripos($link,".tv/") !== false){
+				if(stripos($link,"/c/") !== false){ //This is a VOD
 					$params = explode('.tv/', $link)[1];
 					$channel = explode('/c/', $params)[0];
 					$videoid = explode('/c/', $params)[1];
@@ -76,7 +77,7 @@ http://creativecommons.org/licenses/by/4.0
 				}
 			}
 		}
-		else if(strpos($link,"youtu") !== false){ // this is a youtube video
+		else if(stripos($link,"youtu") !== false){ // this is a youtube video
 			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
 				$width= 620;
 				$height = 338;
@@ -86,12 +87,12 @@ http://creativecommons.org/licenses/by/4.0
 				$height = $GLOBALS['height'];
 			}
 
-			if(strpos($link,".be") !== false){ //Shortened link
+			if(stripos($link,".be") !== false){ //Shortened link
 				$videoid = explode('.be/',$link)[1];
 				$videoid = explode('?',$videoid)[0];
 				$videoid = explode('&',$videoid)[0];
 			}
-			else if(strpos($link,".com") !== false){ //Standard link
+			else if(stripos($link,".com") !== false){ //Standard link
 				$videoid = explode('v=',$link)[1];
 				$videoid = explode('&',$videoid)[0];
 				$videoid = explode('/',$videoid)[0];	
@@ -112,7 +113,7 @@ http://creativecommons.org/licenses/by/4.0
 					allowfullscreen>
 				</iframe>';		
 		}
-		else if(strpos($link,"vimeo") !== false){ // this is a youtube video
+		else if(stripos($link,"vimeo") !== false){ // this is a youtube video
 			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
 				$width= 620;
 				$height = 348;
@@ -140,6 +141,52 @@ http://creativecommons.org/licenses/by/4.0
 					mozallowfullscreen 
 					allowfullscreen>
 				</iframe>';
+		}
+		else if(stripos($link,"hitbox") !== false){ // this is a youtube video
+			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
+				$width= 620;
+				$height = 348;
+			}
+			else{
+				$width = $GLOBALS['width'];
+				$height = $GLOBALS['height'];
+			}
+			if(stripos($link, "/video/") !== false){ //This is a Video on Demand
+				$videoid = explode('/video/',$link)[1];
+				$videoid = explode('&',$videoid)[0];
+				$videoid = explode('?',$videoid)[0];
+				echo '<iframe
+						width="'.$width.'" 
+						height="'.$height.'" 
+						src="http://www.hitbox.tv/#!/embedvideo/'.$videoid.'"
+						frameborder="0"
+						webkitallowfullscreen 
+						mozallowfullscreen 
+						allowfullscreen>
+					</iframe>';
+				if($GLOBALS['debug']){
+					echo nl2br("Link: ".$link."\n");
+					echo nl2br("Video ID: ".$videoid."\n");
+				}
+			}
+			else if(stripos($link, ".tv/") !== false){ //This is a live stream
+				$channel = explode('.tv/',$link)[1];
+				$channel = explode('&',$channel)[0];
+				$channel = explode('?',$channel)[0];
+				echo '<iframe 
+						width="'.$width.'" 
+						height="'.$height.'" 
+						src="http://www.hitbox.tv/embed/'.$channel.'" 
+						frameborder="0" 
+						webkitallowfullscreen 
+						mozallowfullscreen 
+						allowfullscreen>
+					</iframe>';
+				if($GLOBALS['debug']){
+					echo nl2br("Link: ".$link."\n");
+					echo nl2br("Channel: ".$channel."\n");
+				}
+			}
 		}
 		$width = -1;
 		$height = -1;
