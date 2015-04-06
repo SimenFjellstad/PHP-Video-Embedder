@@ -6,7 +6,6 @@ Project page: https://github.com/SimenFjellstad/PHP-Video-Embedder/
 This document is published under the Creative Commons 4.0 License:
 http://creativecommons.org/licenses/by/4.0
 */
-
 	$debug = false;
 	$width = -1;
 	$height = -1;
