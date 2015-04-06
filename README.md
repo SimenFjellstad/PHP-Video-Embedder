@@ -33,8 +33,8 @@ To embed the video with a custom id only, use the **embed_video_with_id()** func
 To embed the video using a custom size *and* id, use the **embed_sized_video_with_id** function: 
 `embed_sized_video_with_id('LINK_TO_VIDEO', ID, WIDTH, HEIGHT);`
 
-#####You may also use the setDebug(bool) command if you want to see the variable output as well.
->setDebug(bool);
+#####You may also use the setDebug(bool) command if you want to see the variable output as well.  
+`setDebug(bool);`  
 
 ####JavaScript functions:  
 To use javascript functions for this plugin, you will have to import the **embedder_control.js** file:  
