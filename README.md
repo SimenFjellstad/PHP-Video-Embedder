@@ -4,6 +4,8 @@ The PHP Video Embedder is hosted under the Creative Commons 4.0 License: http://
 
 #Supported video sites:
 - Youtube
+  - shortened links (youtu.be/)
+  - standard links (youtube.com/watch?v=)
 - Twitch
   - Live stream
   - Video on Demand (VOD)
