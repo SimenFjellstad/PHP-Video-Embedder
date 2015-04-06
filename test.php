@@ -2,7 +2,7 @@
 /*
 	This is a test project, to show you how this works.
 */
-	$link = "http://www.twitch.tv/tharixer/v/3968478";
+	$link = "http://www.hitbox.tv/combo2k";
 	include('embedder.php');
 	setDebug(true);
 	embed_video($link);
