@@ -1,6 +1,6 @@
 <?php
 /*
-	This is a test project, to show you how this works.
+	This is a test file, it's here to show you how to use this plugin.
 */
 	include('embedder.php');
 	setDebug(false);
