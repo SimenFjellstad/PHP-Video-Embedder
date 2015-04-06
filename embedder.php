@@ -76,7 +76,7 @@ http://creativecommons.org/licenses/by/4.0
 							<param name="flashvars" value="channel='.$channel.'&amp;videoId=v'.$videoid.'"/>
 					</object>';
 				}
-				else{ // This is a live stream
+				else{ // This is most likely a live stream
 					$channel = explode('.tv/', $link)[1];
 					$channel = explode('?',$channel)[0];
 					$channel = explode('&',$channel)[0];
