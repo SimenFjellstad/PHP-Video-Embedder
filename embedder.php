@@ -6,16 +6,27 @@ Project page: https://github.com/SimenFjellstad/PHP-Video-Embedder/
 This document is published under the Creative Commons 4.0 License:
 http://creativecommons.org/licenses/by/4.0
 */
-
 	$debug = false;
 	$width = -1;
 	$height = -1;
+	$id = 'embed_video';
 
 	function embed_sized_video($link, $width, $height){
 		$GLOBALS['width'] = $width;
 		$GLOBALS['height'] = $height;
 		embed_video($link);
 	}
+	function embed_video_with_id($link, $id){
+		$GLOBALS['id'] = $id;
+		embed_video($link);
+	}
+	function embed_sized_video_with_id($link, $id, $width, $height){
+		$GLOBALS['width'] = $width;
+		$GLOBALS['height'] = $height;
+		$GLOBALS['id'] = $id;
+		embed_video($link);
+	}
+
 
 	function embed_video($link){
 		if(stripos($link,"twitch") !== false){ //This is a twitch video
@@ -38,12 +49,12 @@ http://creativecommons.org/licenses/by/4.0
 						echo nl2br("Channel: ".$channel."\n");
 						echo nl2br("Video ID: ".$videoid."\n");
 					}
-					echo '<object class="embed_video" id="embed_video"
+					echo '<object 
+						id="'.$GLOBALS['id'].'"
 						bgcolor="#000000" 
 						data="http://www.twitch.tv/swflibs/TwitchPlayer.swf" 
 						width="'.$width.'"
 						height="'.$height.'" 
-						id="clip_embed_player_flash" 
 						type="application/x-shockwave-flash">
 							<param name="movie" value="http://www.twitch.tv/swflibs/TwitchPlayer.swf" />
 							<param name="allowScriptAccess" value="always" />
@@ -62,12 +73,11 @@ http://creativecommons.org/licenses/by/4.0
 						echo nl2br("Channel: ".$channel."\n");
 						echo nl2br("Video ID: ".$videoid."\n");
 					}
-					echo '<object class="embed_video" id="embed_video"
+					echo '<object id="'.$GLOBALS['id'].'"
 						bgcolor="#000000" 
 						data="http://www.twitch.tv/swflibs/TwitchPlayer.swf" 
 						width="'.$width.'"
 						height="'.$height.'" 
-						id="clip_embed_player_flash" 
 						type="application/x-shockwave-flash">
 							<param name="movie" value="http://www.twitch.tv/swflibs/TwitchPlayer.swf" />
 							<param name="allowScriptAccess" value="always" />
@@ -86,11 +96,11 @@ http://creativecommons.org/licenses/by/4.0
 						echo nl2br("Channel: ".$channel."\n");
 					}
 					echo '<iframe 
-							class="embed_video" 
-							id="embed_video" 
+							id="'.$GLOBALS['id'].'" 
 							src="http://www.twitch.tv/'.$channel.'/embed" 
 							frameborder="0" 
 							scrolling="no" 
+							allowscriptaccess="always" 
 							height="'.$height.'" 
 							width="'.$width.'" 
 							webkitallowfullscreen 
@@ -125,10 +135,10 @@ http://creativecommons.org/licenses/by/4.0
 				echo nl2br("Video ID: ".$videoid."\n");
 			}
 			echo '<iframe 
-					class="embed_video" 
-					id="embed_video" 
+					id="'.$GLOBALS['id'].'" 
 					width="'.$width.'" 
-					height="'.$height.'" 
+					height="'.$height.'"
+					allowscriptaccess="always"  
 					src="https://www.youtube.com/embed/'.$videoid.'" 
 					frameborder="0" 
 					webkitallowfullscreen 
@@ -154,12 +164,12 @@ http://creativecommons.org/licenses/by/4.0
 				echo nl2br("Video ID: ".$videoid."\n");
 			}
 			echo '<iframe 
-					class="embed_video" 
-					id="embed_video" 
+					id="'.$GLOBALS['id'].'" 
 					src="https://player.vimeo.com/video/'.$videoid.'" 
 					width="'.$width.'" 
 					height="'.$height.'" 
 					frameborder="0" 
+					allowscriptaccess="always" 
 					webkitallowfullscreen 
 					mozallowfullscreen 
 					allowfullscreen>
@@ -179,12 +189,12 @@ http://creativecommons.org/licenses/by/4.0
 				$videoid = explode('&',$videoid)[0];
 				$videoid = explode('?',$videoid)[0];
 				echo '<iframe
-						class="embed_video" 
-						id="embed_video" 
+						id="'.$GLOBALS['id'].'" 
 						width="'.$width.'" 
 						height="'.$height.'" 
 						src="http://www.hitbox.tv/#!/embedvideo/'.$videoid.'"
 						frameborder="0"
+						allowscriptaccess="always" 
 						webkitallowfullscreen 
 						mozallowfullscreen 
 						allowfullscreen>
@@ -199,8 +209,8 @@ http://creativecommons.org/licenses/by/4.0
 				$channel = explode('&',$channel)[0];
 				$channel = explode('?',$channel)[0];
 				echo '<iframe 
-						class="embed_video" 
-						id="embed_video" 
+						allowscriptaccess="always" 
+						id="'.$GLOBALS['id'].'" 
 						width="'.$width.'" 
 						height="'.$height.'" 
 						src="http://www.hitbox.tv/embed/'.$channel.'" 
@@ -217,6 +227,7 @@ http://creativecommons.org/licenses/by/4.0
 		}
 		$width = -1;
 		$height = -1;
+		$id = 'embed_video';
 	}
 
 	function setDebug($debug){
