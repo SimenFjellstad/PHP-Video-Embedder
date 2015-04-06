@@ -1,5 +1,6 @@
 # PHP-Video-Embedder
-PHP Video Embedder is an embedding plugin that embeds videos from various hosts by using a link.
+PHP Video Embedder is an embedding plugin that embeds videos from various hosts.  
+The PHP Video Embedder is hosted under the Creative Commons 4.0 License: http://creativecommons.org/licenses/by/4.0.
 
 #Supported video sites:
 - Youtube
