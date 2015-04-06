@@ -52,6 +52,30 @@ http://creativecommons.org/licenses/by/4.0
 							<param name="flashvars" value="channel='.$channel.'&amp;videoId=c'.$videoid.'"/>
 					</object>';
 				}
+				else if(stripos($link,"/v/") !== false){ //This is a VOD
+					$params = explode('.tv/', $link)[1];
+					$channel = explode('/v/', $params)[0];
+					$videoid = explode('/v/', $params)[1];
+					if($GLOBALS['debug']){
+						echo nl2br("Link: ".$link."\n");
+						echo nl2br("Params: ".$params."\n");
+						echo nl2br("Channel: ".$channel."\n");
+						echo nl2br("Video ID: ".$videoid."\n");
+					}
+					echo '<object class="embed_video" id="embed_video"
+						bgcolor="#000000" 
+						data="http://www.twitch.tv/swflibs/TwitchPlayer.swf" 
+						width="'.$width.'"
+						height="'.$height.'" 
+						id="clip_embed_player_flash" 
+						type="application/x-shockwave-flash">
+							<param name="movie" value="http://www.twitch.tv/swflibs/TwitchPlayer.swf" />
+							<param name="allowScriptAccess" value="always" />
+							<param name="allowNetworking" value="all" />
+							<param name="allowFullScreen" value="true" />
+							<param name="flashvars" value="channel='.$channel.'&amp;videoId=v'.$videoid.'"/>
+					</object>';
+				}
 				else{ // This is a live stream
 					$channel = explode('.tv/', $link)[1];
 					$channel = explode('?',$channel)[0];
@@ -113,7 +137,7 @@ http://creativecommons.org/licenses/by/4.0
 					allowfullscreen>
 				</iframe>';		
 		}
-		else if(stripos($link,"vimeo") !== false){ // this is a youtube video
+		else if(stripos($link,"vimeo") !== false){ // this is a vimeo video
 			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
 				$width= 620;
 				$height = 348;
@@ -142,7 +166,7 @@ http://creativecommons.org/licenses/by/4.0
 					allowfullscreen>
 				</iframe>';
 		}
-		else if(stripos($link,"hitbox") !== false){ // this is a youtube video
+		else if(stripos($link,"hitbox") !== false){ // this is a hitbox video
 			if(!($GLOBALS['width'] != -1 && $GLOBALS['height'] != -1)) {
 				$width= 620;
 				$height = 348;
@@ -156,6 +180,8 @@ http://creativecommons.org/licenses/by/4.0
 				$videoid = explode('&',$videoid)[0];
 				$videoid = explode('?',$videoid)[0];
 				echo '<iframe
+						class="embed_video" 
+						id="embed_video" 
 						width="'.$width.'" 
 						height="'.$height.'" 
 						src="http://www.hitbox.tv/#!/embedvideo/'.$videoid.'"
@@ -174,6 +200,8 @@ http://creativecommons.org/licenses/by/4.0
 				$channel = explode('&',$channel)[0];
 				$channel = explode('?',$channel)[0];
 				echo '<iframe 
+						class="embed_video" 
+						id="embed_video" 
 						width="'.$width.'" 
 						height="'.$height.'" 
 						src="http://www.hitbox.tv/embed/'.$channel.'" 
