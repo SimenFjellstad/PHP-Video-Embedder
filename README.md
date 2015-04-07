@@ -36,7 +36,7 @@ To embed the video using a custom size *and* id, use the **embed_sized_video_wit
 #####You may also use the setDebug(bool) command if you want to see the variable output as well.  
 `setDebug(bool);`  
 
-####JavaScript functions:  
+####JavaScript functions: (Optional)  
 To use javascript functions for this plugin, you will have to import the **embedder_control.js** file:  
 `<script src="embedder_control.js"></script>`  
 
