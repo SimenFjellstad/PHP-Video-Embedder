@@ -36,6 +36,11 @@ To embed the video using a custom size *and* id, use the **embed_sized_video_wit
 #####You may also use the setDebug(bool) command if you want to see the variable output as well.  
 `setDebug(bool);`  
 
+#####If you want control over parameters passed into the url of the video, you can use the param functions:
+To set allowParams to a specific bool: `setAllowParams(bool);`  
+To allow params: `allowParams();`  
+To Deny(Disallow) params: `disallowParams();`  
+
 ####JavaScript functions: (Optional)  
 To use javascript functions for this plugin, you will have to import the **embedder_control.js** file:  
 `<script src="embedder_control.js"></script>`  
