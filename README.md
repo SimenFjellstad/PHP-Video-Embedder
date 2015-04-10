@@ -41,6 +41,7 @@ To set allowParams to a specific bool: `setAllowParams(bool);`
 To allow params: `allowParams();`  
 To Deny(Disallow) params: `disallowParams();`  
 
+
 ####JavaScript functions: (Optional)  
 To use javascript functions for this plugin, you will have to import the **embedder_control.js** file:  
 `<script src="embedder_control.js"></script>`  
